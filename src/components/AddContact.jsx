@@ -3,18 +3,18 @@ import React from "react";
 class AddContact extends React.Component {
   state = {
     name: "",
-    email: "",
+    style: "",
   };
 
   add = (e) => {
     e.preventDefault();
-    if (this.state.name === "" || this.state.email === "") {
-      alert("ALl the fields are mandatory!");
+    if (this.state.name === "" || this.state.style === "") {
+      alert("All the fields are mandatory!");
       return;
     }
     this.props.addContactHandler(this.state);
     console.log("this s", this.state);
-    this.setState({ name: "", email: "" });
+    this.setState({ name: "", style: "" });
     this.props.history.push("/");
   };
   render() {
@@ -33,13 +33,13 @@ class AddContact extends React.Component {
             />
           </div>
           <div className="field">
-            <label>Email</label>
+            <label>Style</label>
             <input
               type="text"
-              name="email"
-              placeholder="Email"
-              value={this.state.email}
-              onChange={(e) => this.setState({ email: e.target.value })}
+              name="style"
+              placeholder="Style"
+              value={this.state.style}
+              onChange={(e) => this.setState({ style: e.target.value })}
             />
           </div>
           <button className="ui button blue">Add</button>
@@ -50,4 +50,3 @@ class AddContact extends React.Component {
 }
 
 export default AddContact;
-

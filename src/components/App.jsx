@@ -10,14 +10,16 @@ import ContactList from "./ContactList";
 import ContactDetail from "./ContactDetail";
 
 function App() {
+  
   // const LOCAL_STORAGE_KEY = "contacts";
   const [contacts, setContacts] = useState([]);
 
   const retrieveContacts = async () => {
-    const response = await api.get("/contacts");
-    console.log(response);
-    return response.data;
+    const response = await api.get("/shoes");
+    console.log("response", response);
+    return response;
   };
+
 
   const addContactHandler = async (contact) => {
     console.log(contact);
@@ -25,14 +27,14 @@ function App() {
       id: uniqid(),
       ...contact,
     };
-    const response = await api.post("/contacts", request);
+    const response = await api.post("/", request);
     console.log(response);
     setContacts([...contacts, response.data]);
   };
 
   const updateContactHandler = async (contact) => {
-    const response = await api.put(`/contacts/${contact.id}`, contact);
-    console.log("update response",response);
+    const response = await api.put(`/${contact.id}`, contact);
+    console.log("update response", response);
     const { id } = response.data;
     setContacts(
       contacts.map((contact) => {
@@ -42,7 +44,7 @@ function App() {
   };
 
   const removeContactHandler = async (id) => {
-    await api.delete(`/contacts/${id}`);
+    await api.delete(`/${id}`);
     const newContactList = contacts.filter((contact) => {
       return contact.id !== id;
     });

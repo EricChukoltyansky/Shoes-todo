@@ -3,29 +3,29 @@ import React from "react";
 class EditContact extends React.Component {
   constructor(props) {
     super(props);
-    const { id, name, email } = props.location.state.contact;
+    const { id, name, style } = props.location.state.contact;
     this.state = {
       id,
       name,
-      email,
+      style,
     };
   }
 
   update = (e) => {
     e.preventDefault();
-    if (this.state.name === "" || this.state.email === "") {
+    if (this.state.name === "" || this.state.style === "") {
       alert("ALl the fields are mandatory!");
       return;
     }
     this.props.updateContactHandler(this.state);
     console.log("this s", this.state);
-    this.setState({ name: "", email: "" });
+    this.setState({ name: "", style: "" });
     this.props.history.push("/");
   };
   render() {
     return (
       <div className="ui main">
-        <h2>Edit Contact</h2>
+        <h2>Edit shoe</h2>
         <form className="ui form" onSubmit={this.update}>
           <div className="field">
             <label>Name</label>
@@ -38,13 +38,13 @@ class EditContact extends React.Component {
             />
           </div>
           <div className="field">
-            <label>Email</label>
+            <label>Style</label>
             <input
               type="text"
               name="email"
               placeholder="Email"
-              value={this.state.email}
-              onChange={(e) => this.setState({ email: e.target.value })}
+              value={this.state.style}
+              onChange={(e) => this.setState({ style: e.target.value })}
             />
           </div>
           <button className="ui button blue">Update</button>

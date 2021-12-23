@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import user from "../images/pexels-photo-1456706.jpeg";
 
 const ContactCard = (props) => {
-  const { id, name, email } = props.contact;
+  const { id, name, style } = props.contact;
   return (
     <div className="item">
       <img className="ui avatar image" src={user} alt="user" />
@@ -12,7 +12,7 @@ const ContactCard = (props) => {
           to={{ pathname: `/contact/${id}`, state: { contact: props.contact } }}
         >
           <div className="header">{name}</div>
-          <div>{email}</div>
+          <div>{style}</div>
         </Link>
       </div>
       <i
