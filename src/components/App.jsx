@@ -10,16 +10,14 @@ import ContactList from "./ContactList";
 import ContactDetail from "./ContactDetail";
 
 function App() {
-  
   // const LOCAL_STORAGE_KEY = "contacts";
   const [contacts, setContacts] = useState([]);
 
   const retrieveContacts = async () => {
     const response = await api.get("/shoes");
     console.log("response", response);
-    return response;
+    return response.data;
   };
-
 
   const addContactHandler = async (contact) => {
     console.log(contact);
